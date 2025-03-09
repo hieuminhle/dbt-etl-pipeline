@@ -14,12 +14,12 @@ profile_config = ProfileConfig(
 )
 
 dbt_snowflake_dag = DbtDag(
-    project_config=ProjectConfig("/usr/local/airflow/dags/dbt/elt_pipeline"),
-    operator_args=("install_deps": True),
+    project_config=ProjectConfig("/usr/local/airflow/dags/dbt/elt_pipeline",),
+    operator_args={"install_deps": True},
     profile_config=profile_config,
     execution_config=ExecutionConfig(dbt_executable_path=f"{os.environment}")
     schedule_interval="@daily",
-    start_date=datetime(2023, 9, 10),
+    start_date=datetime(2025, 3, 10),
     catchup=False,
     dag_id="dbt_dag"
 )
